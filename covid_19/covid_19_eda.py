@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from PIL.ImageColor import colormap
 
 #Data Cleaning & Preprocessing
 pd.set_option('display.max_columns', None)
@@ -13,6 +12,7 @@ covid19_df = pd.read_csv("country_wise_latest.csv")
 covid19_df["Death Rate"] = (covid19_df["Deaths"] / covid19_df["Confirmed"] * 100).round(2)
 covid19_df["Recovery Rate"] = (covid19_df["Recovered"] / covid19_df["Confirmed"] * 100).round(2)
 covid19_df.drop(columns=["Deaths / 100 Recovered"], inplace=True)
+covid19_df.rename(columns={"Country/Region": "Country", "WHO Region":"Region"}, inplace=True)
 #print(covid19_df.head())
 
 #Exploratory Data Analysis (EDA) & Visualizations
@@ -21,7 +21,7 @@ covid19_df_top10 = covid19_df_top10.reset_index(drop=True).iloc[:10,:]
 print(covid19_df.head())
 
 # Melt the data for Seaborn
-melted_df = covid19_df_top10.melt(id_vars="Country/Region", value_vars=["Confirmed", "Deaths", "Recovered"],
+melted_df = covid19_df_top10.melt(id_vars="Country", value_vars=["Confirmed", "Deaths", "Recovered"],
                             var_name="Category", value_name="Count")
 #print(melted_df)
 
@@ -30,11 +30,11 @@ sns.set_style("darkgrid")
 sns.set_palette("flare")
 
 plt.figure(figsize=(12,6), dpi=300)
-ax = sns.barplot(x="Country/Region", y="Count", data=melted_df, hue="Category")
+ax = sns.barplot(x="Country", y="Count", data=melted_df, hue="Category")
 plt.ticklabel_format(axis='y', style='plain')
 plt.gca().set_yticks(plt.gca().get_yticks())  # Keeps default ticks
 plt.gca().set_yticklabels([f"{int(y/1e6)} Mil" for y in plt.gca().get_yticks()])  # Convert to millions
-plt.xlabel("Country/Region", fontsize=12)
+plt.xlabel("Country", fontsize=12)
 plt.ylabel("Count", fontsize=12)
 plt.title("Top 10 most affected countries by COVID-19", fontsize=14)
 plt.legend(title="Category")
@@ -48,4 +48,20 @@ plt.ylabel("Death Rate", fontsize=12)
 plt.title("Recovery vs. Death Rate", fontsize=14)
 plt.show()
 
-#WHO Region Analysis
+#Region Analysis
+confirmed_cases_per_region = covid19_df.groupby("Region")["Confirmed"].sum()
+pie_values = confirmed_cases_per_region.values.tolist()
+pie_labels = confirmed_cases_per_region.index.values.tolist()
+explode = (0.1,0.1,0,0,0,0.2)
+sns.set_palette("deep")
+
+plt.figure(figsize=(8,4), dpi=300)
+plt.pie(pie_values, labels=pie_labels, autopct="%1.1f %%", pctdistance=0.8, startangle=140,
+        explode=explode, shadow=True, textprops={'fontsize': 12})
+plt.title("Confirmed cases per region", fontsize=14, bbox={'facecolor':'0.8', 'pad':5,'edgecolor': 'black', 'linewidth': 1})
+plt.show()
+
+#1 week % increase
+plt.figure(figsize=(8,4), dpi=300)
+sns.histplot(covid19_df["1 week % increase"], bins=10, kde=True, stat="count")
+plt.show()
