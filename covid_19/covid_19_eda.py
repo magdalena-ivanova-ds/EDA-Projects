@@ -31,11 +31,8 @@ sns.set_palette("flare")
 
 plt.figure(figsize=(12,6), dpi=300)
 ax = sns.barplot(x="Country", y="Count", data=melted_df, hue="Category")
-plt.ticklabel_format(axis='y', style='plain')
-plt.gca().set_yticks(plt.gca().get_yticks())  # Keeps default ticks
-plt.gca().set_yticklabels([f"{int(y/1e6)} Mil" for y in plt.gca().get_yticks()])  # Convert to millions
 plt.xlabel("Country", fontsize=12)
-plt.ylabel("Count", fontsize=12)
+plt.ylabel("Count (in millions)", fontsize=12)
 plt.title("Top 10 most affected countries by COVID-19", fontsize=14)
 plt.legend(title="Category")
 plt.show()
@@ -76,3 +73,13 @@ sns.heatmap(df_no_countries.corr(), annot=True, vmin=0, vmax=1, cmap='YlGnBu')
 plt.show()
 
 ##Trend analysis
+grouped_region_df = covid19_df.groupby("Region", as_index=False)[["Confirmed", "Deaths", "Recovered"]].sum().sort_values(by="Confirmed")
+plt.figure(figsize=(12, 6))
+sns.lineplot(data=grouped_region_df, x="Region", y="Confirmed", marker="o", label="Total Cases")
+sns.lineplot(data=grouped_region_df, x="Region", y="Deaths", marker="o", label="Total Deaths", color="red")
+sns.lineplot(data=grouped_region_df, x="Region", y="Recovered", marker="o", label="Total Recovered", color="green")
+
+plt.ylabel("Count (in millions)")
+plt.title("COVID-19 Case Comparison Across Regions")
+plt.legend()
+plt.show()
