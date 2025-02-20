@@ -64,4 +64,15 @@ plt.show()
 #1 week % increase
 plt.figure(figsize=(8,4), dpi=300)
 sns.histplot(covid19_df["1 week % increase"], bins=10, kde=True, stat="count")
+plt.xlim(0,60)
+plt.xlabel("Increase in cases per week (in %)")
+plt.title("")
 plt.show()
+
+##Correlation
+df_no_countries = covid19_df.drop(columns=["Country", "Region"])
+plt.figure(figsize=(8,4), dpi=300)
+sns.heatmap(df_no_countries.corr(), annot=True, vmin=0, vmax=1, cmap='YlGnBu')
+plt.show()
+
+##Trend analysis
