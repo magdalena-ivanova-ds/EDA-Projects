@@ -1,6 +1,6 @@
 # EDA-Projects
 
-Welcome to my **Exploratory Data Analysis (EDA) Projects** repository! 🚀
+Welcome to my **Exploratory Data Analysis (EDA) Projects** repository! 
 
 This is where I store my small EDA projects, each in its own folder. The goal is to analyze and visualize different datasets, uncovering patterns, trends, and insights in the process. I treat this repo as a learning space where I experiment with data and improve my analytical skills.
 
@@ -23,7 +23,7 @@ Each project has its own folder with:
 - 🔢 numpy
 - 📊 matplotlib & seaborn
 
-## Future Plans
-I'll keep adding more projects as I explore different datasets. If you have any suggestions or interesting datasets, feel free to share! 
 
-Thanks for stopping by! If you find my work interesting, feel free to ⭐ this repo or check out my other projects on GitHub. Happy analyzing! 📊✨
+I'll keep adding more projects as I explore different datasets. If you have any suggestions or interesting datasets, feel free to share!
+
+If you find my work interesting, feel free to ⭐ this repo or check out my other projects on GitHub.
