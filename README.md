@@ -12,7 +12,7 @@ This is where I store my small EDA projects, each in its own folder. The goal is
 
 ## How to Navigate?
 Each project has its own folder with:
-- A **notebook (.ipynb)** containing the code and explanations.
+- A **notebook (.ipynb)** or **python file(.py)** containing the code and explanations.
 - A **README.md** (if needed) to provide context about the dataset and findings.
 - Any relevant **datasets** (if publicly available or linked to a source).
 
