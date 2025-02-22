@@ -1,5 +1,4 @@
 # EDA-Projects
-# EDA Projects
 
 Welcome to my **Exploratory Data Analysis (EDA) Projects** repository! 🚀
 
@@ -10,9 +9,6 @@ This is where I store my small EDA projects, each in its own folder. The goal is
 - 📈 **Visualizations** – Creating meaningful plots to explore data.
 - 📑 **Statistical Insights** – Basic descriptive statistics and correlations.
 - 🔍 **Key Findings** – Summarizing the most interesting takeaways from each dataset.
-
-## Why This Repository?
-EDA is a crucial first step in any data analysis or machine learning project. This repository helps me practice and refine my skills in **pandas, numpy, matplotlib, and seaborn**, while also serving as a portfolio of my work.
 
 ## How to Navigate?
 Each project has its own folder with:
