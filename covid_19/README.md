@@ -24,6 +24,13 @@ The dataset used is
      - Correlation heatmap of selected metrics
      - Line plot showing COVID-19 trends across regions
 
+## Key Insights
+- European countries had a higher death rate, while African countries had lower confirmed cases but higher 1-week growth rates.
+- The majority of confirmed cases are concentrated in a few key regions.
+- Higher recovery rates correlate with lower death rates, indicating effective healthcare responses.
+
+For more detailed analysis, refer to [covid.ipynb](https://github.com/magdalena-ivanova-ds/EDA-Projects/blob/main/covid_19/covid.ipynb).
+
 ## Requirements
 To run this analysis, install the required Python libraries. Use the package manager [pip](https://pip.pypa.io/en/stable/).
 
